@@ -1,28 +1,39 @@
+# Demo
+
+[Live demo](https://amazon-alextaymx.vercel.app/)
+
 # Installation Steps
-
-
 
 ## Using npm
 
 Run commands
 
-1) ```npm install```
+1. `npm install`
 
-
-2) ```npm run dev```
-
+2. `npm run dev`
 
 ## Or using yarn
 
-Run commands 
+Run commands
 
-1) ```npm install --global yarn```
+1. `npm install --global yarn`
 
-2) ```yarn install```
+2. `yarn install`
 
-3) ```yarn run dev```
+3. `yarn run dev`
 
+## Git Commands
 
-### If you see the window below then you are set to build AMAZON 2.0!
+Run commands
 
-![Template Screenshot](TemplateScreenshot.jpg?raw=true "Template Screenshot")
+1. `git remote add origin https://github.com/alextaymx/amazon-clone.git`
+
+2. `git remote set-url origin https://github.com/alextaymx/amazon-clone.git`
+
+3. `git add *`
+
+4. `git commit -m 'app build'`
+
+### AMAZON 2.0 - clone by Alex Tay
+
+![Template Screenshot](TemplateScreenshot.jpg?raw=true "Website Screenshot")
