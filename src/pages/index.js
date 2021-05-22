@@ -9,7 +9,7 @@ export default function Home({ products }) {
       {/* <Head>
         <title>Amazon 2.0</title>
       </Head> */}
-      <Header />
+      <Header products={products} />
       <main className="max-w-screen-2xl mx-auto">
         {/* Banner */}
         <Banner />

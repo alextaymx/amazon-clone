@@ -1,21 +1,16 @@
-import { StarIcon } from "@heroicons/react/solid";
+import { StarIcon, MinusSmIcon, PlusIcon } from "@heroicons/react/solid";
 import Image from "next/image";
 import Currency from "react-currency-formatter";
 import { useDispatch } from "react-redux";
 import { addToBasket, removeFromBasket } from "../slices/basketSlice";
 
-function CheckoutProduct({ item }) {
+function CheckoutProduct({ item, quantity }) {
   const { id, title, price, rating, description, category, image, hasPrime } = item;
+  const totalPrice = price * quantity;
   const dispatch = useDispatch();
   const addItemToBasket = () => {
     const product = {
-      id,
-      title,
-      price,
-      description,
-      category,
-      image,
-      hasPrime,
+      ...item,
     };
     dispatch(addToBasket(product));
   };
@@ -40,7 +35,13 @@ function CheckoutProduct({ item }) {
             ))}
         </div>
         <p className="text-xs my-2 line-clamp-3">{description}</p>
-        <Currency quantity={price} currency="GBP" />
+
+        <div className="mb-5">
+          {quantity} x <Currency quantity={price} currency="GBP" /> ={" "}
+          <span className="font-bold">
+            <Currency quantity={totalPrice} currency="GBP" />
+          </span>
+        </div>
         {hasPrime && (
           <div className="flex items-center space-x-2 -mt-5">
             <img loading="lazy" className="w-12" src="https://links.papareact.com/fdw" alt="" />
@@ -51,12 +52,23 @@ function CheckoutProduct({ item }) {
       {/* Right add/remove buttons */}
 
       <div className="flex flex-col space-y-2 my-auto justify-self-end">
-        <button className="button" onClick={addItemToBasket}>
+        <div className="flex flex-row space-x-5">
+          <button className="button p-1" onClick={removeItemFromBasket}>
+            <MinusSmIcon className="h-5 text-black" />
+          </button>
+          <div className="p-2 whitespace-normal sm:p-1 sm:whitespace-nowrap">
+            <span className="font-bold">{quantity}</span>
+          </div>
+          <button className="button sm:p-1" onClick={addItemToBasket}>
+            <PlusIcon className="h-5 text-black" />
+          </button>
+        </div>
+        {/* <button className="button" onClick={addItemToBasket}>
           Add to Basket
         </button>
         <button className="button" onClick={removeItemFromBasket}>
           Remove from Basket
-        </button>
+        </button> */}
       </div>
     </div>
   );
