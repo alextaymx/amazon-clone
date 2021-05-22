@@ -2,10 +2,10 @@ import { useSession } from "next-auth/client";
 import Image from "next/image";
 import Currency from "react-currency-formatter";
 import { useSelector } from "react-redux";
-import CheckoutProduct from "../components/CheckoutProduct";
+import CheckoutProduct, { CheckoutProductWithReveal } from "../components/CheckoutProduct";
 import Header from "../components/Header";
 import { selectItems, selectTotal } from "../slices/basketSlice";
-import Fade from "react-reveal/Fade";
+
 import TransitionGroup from "react-transition-group/TransitionGroup";
 import { groupBy } from "lodash";
 
@@ -46,7 +46,7 @@ function Checkout() {
             >
               {groupedItems.map((group, i) => (
                 // <Fade key={i} collapse bottom className="flex flex-wrap">
-                <CheckoutProduct key={i} item={group[0]} quantity={group.length} />
+                <CheckoutProductWithReveal key={i} item={group[0]} quantity={group.length} />
                 // </Fade>
               ))}
             </TransitionGroup>

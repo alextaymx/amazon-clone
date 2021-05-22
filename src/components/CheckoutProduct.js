@@ -3,8 +3,10 @@ import Image from "next/image";
 import Currency from "react-currency-formatter";
 import { useDispatch } from "react-redux";
 import { addToBasket, removeFromBasket } from "../slices/basketSlice";
+import withReveal from "react-reveal/withReveal";
+import Fade from "react-reveal/Fade";
 
-function CheckoutProduct({ item, quantity }) {
+function CheckoutProduct({ item, quantity, innerRef }) {
   const { id, title, price, rating, description, category, image, hasPrime } = item;
   const totalPrice = price * quantity;
   const dispatch = useDispatch();
@@ -21,7 +23,7 @@ function CheckoutProduct({ item, quantity }) {
   };
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-5">
+    <div ref={innerRef} className="grid grid-cols-1 sm:grid-cols-5">
       <div className="flex w-full justify-center mt-5">
         <Image src={image} height={200} width={200} objectFit="contain" />
       </div>
@@ -75,5 +77,9 @@ function CheckoutProduct({ item, quantity }) {
     </div>
   );
 }
-
+const CheckoutProductWithReveal = withReveal(
+  CheckoutProduct,
+  <Fade collapse bottom refProp="innerRef" />
+);
 export default CheckoutProduct;
+export { CheckoutProductWithReveal };
