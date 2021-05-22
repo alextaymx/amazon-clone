@@ -36,4 +36,4 @@ Run commands
 
 ### AMAZON 2.0 - clone by Alex Tay
 
-![Template Screenshot](TemplateScreenshot.jpg?raw=true "Website Screenshot")
+![Template Screenshot](DemoScreenshot.jpg?raw=true "Website Screenshot")

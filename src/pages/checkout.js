@@ -45,9 +45,9 @@ function Checkout() {
               className="flex flex-col p-5 space-y-10 "
             >
               {groupedItems.map((group, i) => (
-                <Fade key={i} collapse bottom>
-                  <CheckoutProduct item={group[0]} quantity={group.length} />
-                </Fade>
+                // <Fade key={i} collapse bottom>
+                <CheckoutProduct item={group[0]} quantity={group.length} />
+                // </Fade>
               ))}
             </TransitionGroup>
           </div>

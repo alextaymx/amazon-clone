@@ -21,11 +21,13 @@ function CheckoutProduct({ item, quantity }) {
   };
 
   return (
-    <div className="grid grid-cols-5">
-      <Image src={image} height={200} width={200} objectFit="contain" />
+    <div className="grid grid-cols-1 sm:grid-cols-5">
+      <div className="flex w-full justify-center mt-5">
+        <Image src={image} height={200} width={200} objectFit="contain" />
+      </div>
 
       {/* Middle */}
-      <div className="col-span-3 mx-5">
+      <div className="sm:col-span-3 mx-5">
         <p className="">{title}</p>
         <div className="flex">
           {Array(rating)
@@ -51,7 +53,7 @@ function CheckoutProduct({ item, quantity }) {
       </div>
       {/* Right add/remove buttons */}
 
-      <div className="flex flex-col space-y-2 my-auto justify-self-end">
+      <div className="flex flex-col space-y-2 my-auto mx-auto sm:justify-self-end">
         <div className="flex flex-row space-x-5">
           <button className="button p-1" onClick={removeItemFromBasket}>
             <MinusSmIcon className="h-5 text-black" />
