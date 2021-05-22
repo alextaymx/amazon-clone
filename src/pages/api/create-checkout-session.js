@@ -30,6 +30,6 @@ export default async (req, res) => {
       images: JSON.stringify(items.map((item) => item.image)),
     },
   });
-
+  console.log(`${process.env.HOST}/success`, "host");
   res.status(200).json({ id: session.id });
 };

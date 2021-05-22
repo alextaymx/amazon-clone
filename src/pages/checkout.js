@@ -38,7 +38,7 @@ function Checkout() {
     <div className="bg-gray-100 min-h-screen">
       <Header />
 
-      <main className="lg:flex max-w-screen-2xl ">
+      <main className="lg:flex max-w-screen-2xl mx-auto">
         {/* Left */}
         <div className="flex-grow m-5 shadow-sm">
           <div className="w-full m-5 flex justify-center">
