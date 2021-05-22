@@ -80,7 +80,7 @@ function Header({ products }) {
             <p className="font-extrabold md:text-sm">Account & Lists</p>
           </div>
 
-          <div className="link transform active:scale-90">
+          <div onClick={() => router.push("/orders")} className="link transform active:scale-90">
             <p>Returns</p>
             <p className="font-extrabold md:text-sm">& Orders</p>
           </div>
