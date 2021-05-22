@@ -14,22 +14,25 @@ export default async (req, res) => {
       },
     },
   }));
+  try {
+    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ["card"],
+      shipping_rates: ["shr_1ItxPPHSf1SlNSCIhf1ocnwf"],
+      shipping_address_collection: {
+        allowed_countries: ["GB", "US", "CA"],
+      },
+      line_items: transformedItems,
+      mode: "payment",
+      success_url: `${process.env.HOST}/success`,
+      cancel_url: `${process.env.HOST}/checkout`,
+      metadata: {
+        email,
+        images: JSON.stringify(items.map((item) => item.image)),
+      },
+    });
 
-  const session = await stripe.checkout.sessions.create({
-    payment_method_types: ["card"],
-    shipping_rates: ["shr_1ItxPPHSf1SlNSCIhf1ocnwf"],
-    shipping_address_collection: {
-      allowed_countries: ["GB", "US", "CA"],
-    },
-    line_items: transformedItems,
-    mode: "payment",
-    success_url: `${process.env.HOST}/success`,
-    cancel_url: `${process.env.HOST}/checkout`,
-    metadata: {
-      email,
-      images: JSON.stringify(items.map((item) => item.image)),
-    },
-  });
-  console.log(`${process.env.HOST}/success`, "host");
-  res.status(200).json({ id: session.id });
+    res.status(200).json({ id: session.id });
+  } catch (error) {
+    res.status(400).send(`Error in strip checkout sessions ${error.message}`);
+  }
 };
