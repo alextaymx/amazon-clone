@@ -3,9 +3,10 @@ import * as admin from "firebase-admin";
 
 // Secure a connection to FIREBASE from the backend
 const serviceAccount = require("../../../firebase.json");
+
 const app = !admin.apps.length
   ? admin.initializeApp({
-      credentials: admin.credential.cert(serviceAccount),
+      credential: admin.credential.cert(serviceAccount),
     })
   : admin.app();
 
