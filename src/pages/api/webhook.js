@@ -1,6 +1,10 @@
 import { buffer } from "micro";
 import * as admin from "firebase-admin";
 
+// Local Stripe CLI
+// ./stripe.exe listen --forward-to localhost:3000/api/webhook
+// https://stripe.com/docs/stripe-cli
+
 // Secure a connection to FIREBASE from the backend
 const serviceAccount = require("../../../firebase.json");
 
@@ -72,3 +76,7 @@ export const config = {
     externalResolver: true,
   },
 };
+
+// Local Stripe CLI
+// ./stripe.exe listen --forward-to localhost:3000/api/webhook
+// https://stripe.com/docs/stripe-cli
